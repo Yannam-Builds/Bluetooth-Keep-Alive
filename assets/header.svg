@@ -1,30 +1,33 @@
-<svg width="1200" height="420" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
   <title id="title">Bluetooth Keep-Alive</title>
-  <desc id="desc">Elegant dark repository header for Bluetooth Keep-Alive, a native Windows tray utility.</desc>
-  <rect width="1200" height="420" fill="#0d1117"/>
-  <g opacity=".12">
-    <path d="M0 70H1200M0 140H1200M0 210H1200M0 280H1200M0 350H1200" stroke="#ffffff"/>
-    <path d="M100 0V420M200 0V420M300 0V420M400 0V420M500 0V420M600 0V420M700 0V420M800 0V420M900 0V420M1000 0V420M1100 0V420" stroke="#ffffff"/>
-  </g>
-  <circle cx="246" cy="210" r="180" fill="url(#glow)" opacity=".8"/>
-  <rect x="48" y="48" width="1104" height="324" rx="30" fill="#0d1117" stroke="#30363d"/>
-  <g transform="translate(94 94) scale(.46)">
-    <g transform="translate(256 256) scale(1.18) translate(-256 -256)">
-      <path fill="#ffffff" d="M64 195h79l94-72v266l-94-72H64V195Z"/>
-      <path d="M243 184c36 28 36 116 0 144" stroke="#ffffff" stroke-width="25" stroke-linecap="round"/>
-      <path d="M296 141c64 50 64 180 0 230" stroke="#ffffff" stroke-width="23" stroke-linecap="round"/>
-      <path d="M369 145v222M369 145l74 56-74 55 74 56-74 55M369 256l-59-58M369 256l-59 58" stroke="#ffffff" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-  </g>
-  <text x="374" y="157" fill="#ffffff" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="60" font-weight="760" letter-spacing="-1.6">Bluetooth Keep-Alive</text>
-  <text x="376" y="206" fill="#8b949e" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="22" letter-spacing="3.2">NATIVE WINDOWS TRAY UTILITY</text>
-  <path d="M376 246H1018" stroke="#30363d"/>
-  <text x="376" y="294" fill="#c9d1d9" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="28">Keeps Bluetooth audio awake with a silent high-frequency stream.</text>
-  <text x="376" y="332" fill="#8b949e" font-family="Segoe UI, Inter, Arial, sans-serif" font-size="19">No Electron · no WAV loop seams · system-tray control · generated transparent icon</text>
+  <desc id="desc">Elegant repository header using the official Bluetooth Keep-Alive PNG logo.</desc>
   <defs>
-    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(246 210) rotate(90) scale(180)">
-      <stop stop-color="#58a6ff" stop-opacity=".24"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11161d"/>
+      <stop offset="1" stop-color="#090c10"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(206 210) rotate(90) scale(160)">
+      <stop stop-color="#58a6ff" stop-opacity=".18"/>
       <stop offset="1" stop-color="#0d1117" stop-opacity="0"/>
     </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
   </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <rect width="1200" height="420" fill="url(#grid)"/>
+  <rect x="36" y="36" width="1128" height="348" rx="26" fill="#0d1117" fill-opacity=".94" stroke="#30363d" stroke-width="2"/>
+  <circle cx="206" cy="210" r="160" fill="url(#glow)"/>
+  <rect x="76" y="76" width="260" height="268" rx="24" fill="#0b0f14" stroke="#30363d" stroke-width="2"/>
+  <image href="logo.png" xlink:href="logo.png" x="102" y="106" width="208" height="208" preserveAspectRatio="xMidYMid meet"/>
+  <text x="390" y="106" fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="500" letter-spacing="2.8">NATIVE WINDOWS TRAY UTILITY</text>
+  <text x="388" y="188" fill="#f0f6fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-1.4">Bluetooth Keep-Alive</text>
+  <text x="390" y="238" fill="#c9d1d9" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="23">Keeps Bluetooth audio awake with a silent high-frequency stream.</text>
+  <path d="M390 270H1092" stroke="#30363d" stroke-width="2"/>
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" text-anchor="middle">
+    <g transform="translate(390 295)"><rect width="138" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="69" y="24" fill="#c9d1d9">C# / WINFORMS</text></g>
+    <g transform="translate(550 295)"><rect width="108" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="54" y="24" fill="#c9d1d9">18–22 KHZ</text></g>
+    <g transform="translate(680 295)"><rect width="138" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="69" y="24" fill="#c9d1d9">SYSTEM TRAY</text></g>
+    <g transform="translate(840 295)"><rect width="122" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="61" y="24" fill="#c9d1d9">MIT LICENSE</text></g>
+  </g>
 </svg>

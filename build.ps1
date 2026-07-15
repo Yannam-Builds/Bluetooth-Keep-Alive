@@ -7,14 +7,14 @@ if (-not (Test-Path $csc)) {
 $ErrorActionPreference = "Stop"
 New-Item -ItemType Directory -Force -Path "obj" | Out-Null
 
-Write-Host "Generating transparent app icon..."
+Write-Host "Generating app icon from assets\logo.png..."
 & $csc /nologo /target:exe /out:obj\IconBuilder.exe /r:System.Drawing.dll tools\IconBuilder.cs
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Icon builder compilation failed."
     exit $LASTEXITCODE
 }
 
-& .\obj\IconBuilder.exe app.ico
+& .\obj\IconBuilder.exe assets\logo.png app.ico
 if ($LASTEXITCODE -ne 0) {
     Write-Error "Icon generation failed."
     exit $LASTEXITCODE

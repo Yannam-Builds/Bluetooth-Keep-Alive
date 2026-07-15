@@ -9,66 +9,110 @@ namespace BluetoothKeepAlive.Tools
     internal static class IconBuilder
     {
         private static readonly int[] IconSizes = new int[] { 16, 20, 24, 32, 40, 48, 64, 128, 256 };
+        private const float MarkWidthRatio = 0.78f; // ~20% larger than the source mark inside its original canvas.
 
         private static int Main(string[] args)
         {
-            string outputPath = args.Length > 0 ? args[0] : "app.ico";
+            string sourcePath = args.Length > 0 ? args[0] : Path.Combine("assets", "logo.png");
+            string outputPath = args.Length > 1 ? args[1] : "app.ico";
+
+            if (!File.Exists(sourcePath))
+            {
+                Console.Error.WriteLine("Logo source not found: " + sourcePath);
+                return 1;
+            }
+
             string directory = Path.GetDirectoryName(Path.GetFullPath(outputPath));
             if (!String.IsNullOrEmpty(directory))
             {
                 Directory.CreateDirectory(directory);
             }
 
-            byte[][] images = new byte[IconSizes.Length][];
-            for (int i = 0; i < IconSizes.Length; i++)
+            using (Bitmap source = new Bitmap(sourcePath))
             {
-                images[i] = RenderPng(IconSizes[i]);
-            }
+                Rectangle visibleBounds = FindVisibleBounds(source);
+                byte[][] images = new byte[IconSizes.Length][];
 
-            using (FileStream stream = new FileStream(outputPath, FileMode.Create, FileAccess.Write))
-            using (BinaryWriter writer = new BinaryWriter(stream))
-            {
-                writer.Write((ushort)0); // reserved
-                writer.Write((ushort)1); // icon type
-                writer.Write((ushort)IconSizes.Length);
-
-                int offset = 6 + (16 * IconSizes.Length);
                 for (int i = 0; i < IconSizes.Length; i++)
                 {
-                    int size = IconSizes[i];
-                    byte[] image = images[i];
-                    writer.Write((byte)(size >= 256 ? 0 : size));
-                    writer.Write((byte)(size >= 256 ? 0 : size));
-                    writer.Write((byte)0); // color count
-                    writer.Write((byte)0); // reserved
-                    writer.Write((ushort)1); // color planes
-                    writer.Write((ushort)32); // bits per pixel
-                    writer.Write((uint)image.Length);
-                    writer.Write((uint)offset);
-                    offset += image.Length;
+                    images[i] = RenderPng(source, visibleBounds, IconSizes[i]);
                 }
 
-                for (int i = 0; i < images.Length; i++)
-                {
-                    writer.Write(images[i]);
-                }
+                WriteIcon(outputPath, images);
             }
 
-            Console.WriteLine("Generated " + outputPath + " with transparent white icon layers.");
+            Console.WriteLine("Generated " + outputPath + " from " + sourcePath + ".");
             return 0;
         }
 
-        private static byte[] RenderPng(int size)
+        private static Rectangle FindVisibleBounds(Bitmap source)
+        {
+            int left = source.Width;
+            int top = source.Height;
+            int right = -1;
+            int bottom = -1;
+
+            for (int y = 0; y < source.Height; y++)
+            {
+                for (int x = 0; x < source.Width; x++)
+                {
+                    if (source.GetPixel(x, y).A <= 8)
+                    {
+                        continue;
+                    }
+
+                    if (x < left) left = x;
+                    if (x > right) right = x;
+                    if (y < top) top = y;
+                    if (y > bottom) bottom = y;
+                }
+            }
+
+            if (right < left || bottom < top)
+            {
+                throw new InvalidDataException("The logo PNG contains no visible pixels.");
+            }
+
+            return Rectangle.FromLTRB(left, top, right + 1, bottom + 1);
+        }
+
+        private static byte[] RenderPng(Bitmap source, Rectangle sourceBounds, int size)
         {
             using (Bitmap bitmap = new Bitmap(size, size, PixelFormat.Format32bppArgb))
             using (Graphics graphics = Graphics.FromImage(bitmap))
             {
                 graphics.Clear(Color.Transparent);
-                graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.CompositingMode = CompositingMode.SourceCopy;
                 graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
 
-                DrawLogo(graphics, size);
+                float targetWidth = size * MarkWidthRatio;
+                float scale = targetWidth / sourceBounds.Width;
+                float targetHeight = sourceBounds.Height * scale;
+
+                if (targetHeight > size * MarkWidthRatio)
+                {
+                    targetHeight = size * MarkWidthRatio;
+                    scale = targetHeight / sourceBounds.Height;
+                    targetWidth = sourceBounds.Width * scale;
+                }
+
+                RectangleF destination = new RectangleF(
+                    (size - targetWidth) / 2f,
+                    (size - targetHeight) / 2f,
+                    targetWidth,
+                    targetHeight);
+
+                graphics.DrawImage(
+                    source,
+                    destination,
+                    sourceBounds.X,
+                    sourceBounds.Y,
+                    sourceBounds.Width,
+                    sourceBounds.Height,
+                    GraphicsUnit.Pixel);
 
                 using (MemoryStream memory = new MemoryStream())
                 {
@@ -78,65 +122,38 @@ namespace BluetoothKeepAlive.Tools
             }
         }
 
-        private static void DrawLogo(Graphics graphics, int size)
+        private static void WriteIcon(string outputPath, byte[][] images)
         {
-            GraphicsState state = graphics.Save();
-
-            float scale = (size / 512f) * 1.18f; // larger mark for taskbar/EXE readability
-            graphics.TranslateTransform(size / 2f, size / 2f);
-            graphics.ScaleTransform(scale, scale);
-            graphics.TranslateTransform(-256f, -256f);
-
-            using (SolidBrush whiteBrush = new SolidBrush(Color.White))
-            using (Pen wavePen = new Pen(Color.White, 25f))
-            using (Pen outerWavePen = new Pen(Color.White, 23f))
-            using (Pen bluetoothPen = new Pen(Color.White, 22f))
+            using (FileStream stream = new FileStream(outputPath, FileMode.Create, FileAccess.Write))
+            using (BinaryWriter writer = new BinaryWriter(stream))
             {
-                wavePen.StartCap = LineCap.Round;
-                wavePen.EndCap = LineCap.Round;
-                outerWavePen.StartCap = LineCap.Round;
-                outerWavePen.EndCap = LineCap.Round;
-                bluetoothPen.StartCap = LineCap.Round;
-                bluetoothPen.EndCap = LineCap.Round;
-                bluetoothPen.LineJoin = LineJoin.Round;
+                writer.Write((ushort)0);
+                writer.Write((ushort)1);
+                writer.Write((ushort)IconSizes.Length);
 
-                PointF[] speaker = new PointF[]
+                int offset = 6 + (16 * IconSizes.Length);
+                for (int i = 0; i < images.Length; i++)
                 {
-                    new PointF(64f, 195f),
-                    new PointF(143f, 195f),
-                    new PointF(237f, 123f),
-                    new PointF(237f, 389f),
-                    new PointF(143f, 317f),
-                    new PointF(64f, 317f)
-                };
-                graphics.FillPolygon(whiteBrush, speaker);
+                    int size = IconSizes[i];
+                    byte[] image = images[i];
 
-                using (GraphicsPath innerWave = new GraphicsPath())
-                using (GraphicsPath outerWave = new GraphicsPath())
-                using (GraphicsPath bluetooth = new GraphicsPath())
+                    writer.Write((byte)(size >= 256 ? 0 : size));
+                    writer.Write((byte)(size >= 256 ? 0 : size));
+                    writer.Write((byte)0);
+                    writer.Write((byte)0);
+                    writer.Write((ushort)1);
+                    writer.Write((ushort)32);
+                    writer.Write((uint)image.Length);
+                    writer.Write((uint)offset);
+
+                    offset += image.Length;
+                }
+
+                for (int i = 0; i < images.Length; i++)
                 {
-                    innerWave.AddBezier(243f, 184f, 279f, 212f, 279f, 300f, 243f, 328f);
-                    outerWave.AddBezier(296f, 141f, 360f, 191f, 360f, 321f, 296f, 371f);
-
-                    bluetooth.StartFigure();
-                    bluetooth.AddLine(369f, 145f, 369f, 367f);
-                    bluetooth.StartFigure();
-                    bluetooth.AddLine(369f, 145f, 443f, 201f);
-                    bluetooth.AddLine(443f, 201f, 369f, 256f);
-                    bluetooth.AddLine(369f, 256f, 443f, 312f);
-                    bluetooth.AddLine(443f, 312f, 369f, 367f);
-                    bluetooth.StartFigure();
-                    bluetooth.AddLine(369f, 256f, 310f, 198f);
-                    bluetooth.StartFigure();
-                    bluetooth.AddLine(369f, 256f, 310f, 314f);
-
-                    graphics.DrawPath(wavePen, innerWave);
-                    graphics.DrawPath(outerWavePen, outerWave);
-                    graphics.DrawPath(bluetoothPen, bluetooth);
+                    writer.Write(images[i]);
                 }
             }
-
-            graphics.Restore(state);
         }
     }
 }

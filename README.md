@@ -1,8 +1,6 @@
 <div align="center">
 
-<picture>
-  <img src="assets/header.svg" alt="Bluetooth Keep-Alive — native Windows tray utility" width="100%">
-</picture>
+<img src="assets/header.svg" alt="Bluetooth Keep-Alive — native Windows tray utility" width="100%">
 
 <br>
 
@@ -22,8 +20,6 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 
 **Bluetooth Keep-Alive** keeps the audio path warm by generating a quiet high-frequency sine wave in the background. No visible window. No browser. No Electron wrapper. No looped WAV seam clicks.
 
-<div align="center">
-
 ## 02 · Why it is clean
 
 | Area | Decision |
@@ -33,9 +29,7 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 | **Interface** | System tray only; no heavy foreground UI. |
 | **Controls** | Frequency, volume, output device, mute/play, restart stream, and start-on-boot. |
 | **Power behavior** | Pauses on lock/suspend and resumes after unlock/resume. |
-| **Branding** | Transparent white EXE/tray icon generated during build for crisp taskbar rendering. |
-
-</div>
+| **Branding** | The supplied transparent PNG is the single logo source for GitHub and the Windows icon pipeline. |
 
 <p align="center">
   <img src="assets/system-map.svg" alt="Bluetooth Keep-Alive system map" width="100%">
@@ -54,7 +48,7 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 
 1. Download `BluetoothKeepAlive.exe` from **Releases**.
 2. Run it.
-3. Look for the white Bluetooth/audio icon in the Windows system tray.
+3. Look for the white keep-alive logo in the Windows system tray.
 4. Right-click the icon to adjust frequency, volume, output device, startup behavior, or mute/play state.
 
 ## 05 · Build from source
@@ -65,41 +59,42 @@ No Visual Studio project is required. The build script uses the C# compiler incl
 .\build.ps1
 ```
 
-The build script does two things:
+The build process:
 
 ```text
-1. Generate app.ico from tools/IconBuilder.cs
-2. Compile Program.cs and embed app.ico into BluetoothKeepAlive.exe
+1. Read assets/logo.png
+2. Remove transparent padding and generate a multi-resolution app.ico
+3. Compile Program.cs and embed app.ico into BluetoothKeepAlive.exe
 ```
 
 ## 06 · Project layout
 
 ```text
 Bluetooth-Keep-Alive/
-├─ Program.cs                 # Native tray app, audio engine, device routing, settings
-├─ build.ps1                  # One-command Windows build script
+├─ Program.cs                 # Native tray app, audio engine, routing and settings
+├─ build.ps1                  # One-command Windows build
 ├─ tools/
-│  └─ IconBuilder.cs          # Generates the transparent white EXE/tray icon
+│  └─ IconBuilder.cs          # Converts the official PNG into a multi-size ICO
 ├─ assets/
-│  ├─ logo.svg                # Transparent white logo mark
-│  ├─ header.svg              # Repository header
-│  └─ system-map.svg          # Architecture panel
+│  ├─ logo.png                # Official transparent logo
+│  ├─ header.svg              # Header panel referencing the official PNG
+│  └─ system-map.svg          # Signal-flow panel referencing the official PNG
 ├─ LICENSE
 └─ README.md
 ```
 
-## 07 · Design notes
+## 07 · Visual identity
 
-The logo is now a transparent white mark: speaker, wake-wave, and Bluetooth rune. The glyph is scaled larger than the previous icon so it reads better in the Windows taskbar and on the executable.
+`assets/logo.png` is used without redrawing the mark. The header and system map reference that exact PNG. For the executable and tray icon, the builder removes only transparent padding and scales the unchanged artwork to approximately 78% of the icon canvas, making it roughly 20% more prominent while preserving its proportions.
 
 ---
 
 <div align="center">
 
-<img src="assets/logo.svg" alt="Bluetooth Keep-Alive transparent logo" width="104">
+<img src="assets/logo.png" alt="Bluetooth Keep-Alive official logo" width="112">
 
 <br>
 
-<sub>1 Silent stream a day, Keeps the Bluetooth Awake.</sub>
+<sub>1 silent stream a day keeps the Bluetooth awake.</sub>
 
 </div>
