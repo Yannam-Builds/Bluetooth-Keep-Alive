@@ -1,16 +1,13 @@
-# Compiled Binaries
+# Compiled binaries
 *.exe
 *.dll
 *.pdb
 
-# Temporary Logs
-*.log
-
-# Generated/intermediate assets
-*.png
-convert.py
-
-# Common C# build output
+# Generated build artifacts
+app.ico
 bin/
 obj/
 .vs/
+
+# Temporary logs
+*.log

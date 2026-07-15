@@ -4,8 +4,24 @@ if (-not (Test-Path $csc)) {
     exit 1
 }
 
+$ErrorActionPreference = "Stop"
+New-Item -ItemType Directory -Force -Path "obj" | Out-Null
+
+Write-Host "Generating transparent app icon..."
+& $csc /nologo /target:exe /out:obj\IconBuilder.exe /r:System.Drawing.dll tools\IconBuilder.cs
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Icon builder compilation failed."
+    exit $LASTEXITCODE
+}
+
+& .\obj\IconBuilder.exe app.ico
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Icon generation failed."
+    exit $LASTEXITCODE
+}
+
 Write-Host "Compiling BluetoothKeepAlive.exe..."
-& $csc /target:winexe /win32icon:app.ico /out:BluetoothKeepAlive.exe /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.dll /optimize+ Program.cs
+& $csc /nologo /target:winexe /win32icon:app.ico /out:BluetoothKeepAlive.exe /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.dll /optimize+ Program.cs
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host "Compilation successful! Generated BluetoothKeepAlive.exe" -ForegroundColor Green
