@@ -1,0 +1,16 @@
+# Compiled Binaries
+*.exe
+*.dll
+*.pdb
+
+# Temporary Logs
+*.log
+
+# Generated/intermediate assets
+*.png
+convert.py
+
+# Common C# build output
+bin/
+obj/
+.vs/
