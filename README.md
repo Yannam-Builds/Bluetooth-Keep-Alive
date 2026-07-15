@@ -22,6 +22,8 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 
 **Bluetooth Keep-Alive** keeps the audio path warm by generating a quiet high-frequency sine wave in the background. No visible window. No browser. No Electron wrapper. No looped WAV seam clicks.
 
+<div align="center">
+
 ## 02 · Why it is clean
 
 | Area | Decision |
@@ -32,6 +34,8 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 | **Controls** | Frequency, volume, output device, mute/play, restart stream, and start-on-boot. |
 | **Power behavior** | Pauses on lock/suspend and resumes after unlock/resume. |
 | **Branding** | Transparent white EXE/tray icon generated during build for crisp taskbar rendering. |
+
+</div>
 
 <p align="center">
   <img src="assets/system-map.svg" alt="Bluetooth Keep-Alive system map" width="100%">
@@ -96,6 +100,6 @@ The logo is now a transparent white mark: speaker, wake-wave, and Bluetooth rune
 
 <br>
 
-<sub>Small utility. Silent stream. Awake Bluetooth.</sub>
+<sub>1 Silent stream a day, Keeps the Bluetooth Awake.</sub>
 
 </div>
