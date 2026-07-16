@@ -1,0 +1,52 @@
+<svg viewBox="0 0 1200 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Bluetooth Keep-Alive live status</title>
+  <desc id="desc">A live status indicator and animated sine trace for the native zero-dependency Windows utility.</desc>
+  <style>
+    :root {
+      --panel: #f6f8fa;
+      --ink: #0d1117;
+      --muted: #57606a;
+      --line: #d0d7de;
+      --accent: #0969da;
+      --good: #1a7f37;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --panel: #0d1117;
+        --ink: #f0f6fc;
+        --muted: #8b949e;
+        --line: #30363d;
+        --accent: #58a6ff;
+        --good: #3fb950;
+      }
+    }
+    .mono { font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace; }
+    .trace { stroke-dasharray: 7 10; animation: move 2s linear infinite; }
+    .status-ring { animation: status-ring 2.8s cubic-bezier(.2,.72,.2,1) infinite; }
+    .draw { stroke-dasharray: 1100; animation: draw 1.5s cubic-bezier(.55,0,.2,1) backwards; }
+    @keyframes move { to { stroke-dashoffset: -34; } }
+    @keyframes status-ring {
+      0% { r: 5px; opacity: .7; stroke-width: 2px; }
+      72%, 100% { r: 15px; opacity: 0; stroke-width: 1px; }
+    }
+    @keyframes draw {
+      from { stroke-dashoffset: 1100; }
+      to { stroke-dashoffset: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .trace, .status-ring, .draw { animation: none; }
+      .status-ring { opacity: .25; r: 10px; }
+      .draw { stroke-dashoffset: 0; }
+    }
+  </style>
+
+  <rect x="1" y="1" width="1198" height="148" rx="22" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>
+  <path class="draw" d="M38 34H1162" stroke="var(--line)"/>
+  <circle class="status-ring" cx="70" cy="84" r="5" stroke="var(--good)" stroke-width="2"/>
+  <circle cx="70" cy="84" r="5" fill="var(--good)"/>
+  <text x="92" y="80" fill="var(--ink)" class="mono" font-size="13" font-weight="700" letter-spacing="2.2">SIGNAL ACTIVE</text>
+  <text x="92" y="104" fill="var(--muted)" class="mono" font-size="11.5" letter-spacing="1.4">native Windows · zero dependencies · zero telemetry</text>
+
+  <path class="trace" d="M598 84C612 84 612 63 626 63C640 63 640 105 654 105C668 105 668 63 682 63C696 63 696 105 710 105C724 105 724 63 738 63C752 63 752 105 766 105C780 105 780 63 794 63C808 63 808 105 822 105C836 105 836 63 850 63C864 63 864 105 878 105C892 105 892 63 906 63C920 63 920 105 934 105C948 105 948 84 962 84H1118" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="1138" cy="84" r="5" fill="var(--accent)"/>
+</svg>
