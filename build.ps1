@@ -5,12 +5,23 @@ if (-not (Test-Path $csc)) {
     exit 1
 }
 
-if (-not (Test-Path "app.ico")) {
-    Write-Error "Application icon not found: app.ico"
-    exit 1
+$ErrorActionPreference = "Stop"
+New-Item -ItemType Directory -Force -Path "obj" | Out-Null
+
+Write-Host "Generating app.ico from the supplied keep-alive mark..."
+& $csc /nologo /target:exe /out:obj\IconBuilder.exe /r:System.Drawing.dll tools\IconBuilder.cs
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Icon builder compilation failed."
+    exit $LASTEXITCODE
 }
 
-Write-Host "Compiling BluetoothKeepAlive.exe with app.ico..."
+& .\obj\IconBuilder.exe app.ico
+if ($LASTEXITCODE -ne 0) {
+    Write-Error "Icon generation failed."
+    exit $LASTEXITCODE
+}
+
+Write-Host "Compiling BluetoothKeepAlive.exe..."
 & $csc /nologo /target:winexe /win32icon:app.ico /out:BluetoothKeepAlive.exe /r:System.Windows.Forms.dll /r:System.Drawing.dll /r:System.dll /optimize+ Program.cs
 
 if ($LASTEXITCODE -eq 0) {

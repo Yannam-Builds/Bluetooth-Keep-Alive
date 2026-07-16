@@ -3,7 +3,8 @@
 *.dll
 *.pdb
 
-# Build output
+# Generated build artifacts
+app.ico
 bin/
 obj/
 .vs/

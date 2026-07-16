@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/header.svg?rev=20260716-final" alt="Bluetooth Keep-Alive — native Windows tray utility" width="100%">
+<img src="assets/header.svg?v=3" alt="Bluetooth Keep-Alive — native Windows tray utility" width="100%">
 
 <br>
 
@@ -29,10 +29,10 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 | **Interface** | System tray only; no heavy foreground UI. |
 | **Controls** | Frequency, volume, output device, mute/play, restart stream, and start-on-boot. |
 | **Power behavior** | Pauses on lock/suspend and resumes after unlock/resume. |
-| **Branding** | The supplied transparent logo is used across the README, header, system map, tray icon, and executable. |
+| **Branding** | One self-contained logo source is used by the README artwork and Windows icon builder. |
 
 <p align="center">
-  <img src="assets/system-map.svg?rev=20260716-final" alt="Bluetooth Keep-Alive system map" width="100%">
+  <img src="assets/system-map.svg?v=3" alt="Bluetooth Keep-Alive system map" width="100%">
 </p>
 
 ## 03 · Features
@@ -53,7 +53,7 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 
 ## 05 · Build from source
 
-No Visual Studio project is required. The build script uses the C# compiler included with Windows and embeds the checked-in multi-resolution icon directly into the executable.
+No Visual Studio project is required. The build script generates the multi-resolution Windows icon from the same supplied logo silhouette and embeds it into the executable.
 
 ```powershell
 .\build.ps1
@@ -64,25 +64,22 @@ No Visual Studio project is required. The build script uses the C# compiler incl
 ```text
 Bluetooth-Keep-Alive/
 ├─ Program.cs                 # Native tray app, audio engine, routing and settings
-├─ build.ps1                  # One-command Windows build
-├─ app.ico                    # Multi-resolution Windows executable/tray icon
+├─ build.ps1                  # Generates app.ico and compiles the executable
+├─ tools/
+│  └─ IconBuilder.cs          # Multi-resolution Windows icon generator
 ├─ assets/
-│  ├─ logo.png                # Transparent project logo
-│  ├─ header.svg              # Repository header using the same logo
-│  └─ system-map.svg          # Signal-flow panel using the same logo
+│  ├─ logo.svg                # Supplied keep-alive mark
+│  ├─ header.svg              # Self-contained repository header
+│  └─ system-map.svg          # Self-contained signal-flow panel
 ├─ LICENSE
 └─ README.md
 ```
-
-## 07 · Visual identity
-
-The logo is not redrawn in the repository artwork. `assets/logo.png` is referenced by both the header and system map, while `app.ico` supplies the Windows icon sizes used by the executable and system tray.
 
 ---
 
 <div align="center">
 
-<img src="assets/logo.png?rev=20260716-final" alt="Bluetooth Keep-Alive official logo" width="128">
+<img src="assets/logo.svg?v=3" alt="Bluetooth Keep-Alive logo" width="170">
 
 <br>
 
