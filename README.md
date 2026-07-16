@@ -29,7 +29,7 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 | **Interface** | System tray only; no heavy foreground UI. |
 | **Controls** | Frequency, volume, output device, mute/play, restart stream, and start-on-boot. |
 | **Power behavior** | Pauses on lock/suspend and resumes after unlock/resume. |
-| **Branding** | The supplied transparent PNG is the single logo source for GitHub and the Windows icon pipeline. |
+| **Branding** | The supplied transparent logo is used across the README, header, system map, tray icon, and executable. |
 
 <p align="center">
   <img src="assets/system-map.svg" alt="Bluetooth Keep-Alive system map" width="100%">
@@ -53,18 +53,10 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 
 ## 05 · Build from source
 
-No Visual Studio project is required. The build script uses the C# compiler included with Windows.
+No Visual Studio project is required. The build script uses the C# compiler included with Windows and embeds the checked-in multi-resolution icon directly into the executable.
 
 ```powershell
 .\build.ps1
-```
-
-The build process:
-
-```text
-1. Read assets/logo.png
-2. Remove transparent padding and generate a multi-resolution app.ico
-3. Compile Program.cs and embed app.ico into BluetoothKeepAlive.exe
 ```
 
 ## 06 · Project layout
@@ -73,25 +65,24 @@ The build process:
 Bluetooth-Keep-Alive/
 ├─ Program.cs                 # Native tray app, audio engine, routing and settings
 ├─ build.ps1                  # One-command Windows build
-├─ tools/
-│  └─ IconBuilder.cs          # Converts the official PNG into a multi-size ICO
+├─ app.ico                    # Multi-resolution Windows executable/tray icon
 ├─ assets/
-│  ├─ logo.png                # Official transparent logo
-│  ├─ header.svg              # Header panel referencing the official PNG
-│  └─ system-map.svg          # Signal-flow panel referencing the official PNG
+│  ├─ logo.png                # Transparent project logo
+│  ├─ header.svg              # Repository header using the same logo
+│  └─ system-map.svg          # Signal-flow panel using the same logo
 ├─ LICENSE
 └─ README.md
 ```
 
 ## 07 · Visual identity
 
-`assets/logo.png` is used without redrawing the mark. The header and system map reference that exact PNG. For the executable and tray icon, the builder removes only transparent padding and scales the unchanged artwork to approximately 78% of the icon canvas, making it roughly 20% more prominent while preserving its proportions.
+The logo is not redrawn in the repository artwork. `assets/logo.png` is referenced by both the header and system map, while `app.ico` supplies the Windows icon sizes used by the executable and system tray.
 
 ---
 
 <div align="center">
 
-<img src="assets/logo.png" alt="Bluetooth Keep-Alive official logo" width="112">
+<img src="assets/logo.png" alt="Bluetooth Keep-Alive official logo" width="128">
 
 <br>
 
