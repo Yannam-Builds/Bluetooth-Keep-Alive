@@ -1,6 +1,6 @@
 <svg viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Bluetooth Keep-Alive sine signal laboratory</title>
-  <desc id="desc">A continuously moving sine wave with a scanning sample playhead, cycling frequency readout, and a marked seamless loop boundary.</desc>
+  <desc id="desc">A restrained moving sine wave with a slow sample playhead and marked seamless loop boundary.</desc>
   <style>
     :root {
       --panel: #f6f8fa;
@@ -30,24 +30,8 @@
     }
     .sans { font-family: Geist, "Avenir Next", "Segoe UI", system-ui, sans-serif; }
     .mono { font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace; }
-    .intro { animation: enter .9s cubic-bezier(.2,.72,.2,1) backwards; }
-    .i2 { animation-delay: .16s; }
-    .i3 { animation-delay: .32s; }
-    .phase { animation: phase 2.8s linear infinite; }
-    .ghost-phase { animation: phase 4.8s linear infinite reverse; }
-    .scan { animation: scan 4.8s cubic-bezier(.36,0,.64,1) infinite; }
-    .sample { animation: sample 2.1s cubic-bezier(.22,.72,.2,1) infinite; }
-    .s2 { animation-delay: .24s; }
-    .s3 { animation-delay: .48s; }
-    .s4 { animation-delay: .72s; }
-    .s5 { animation-delay: .96s; }
-    .s6 { animation-delay: 1.2s; }
-    .seam { animation: seam 2.7s cubic-bezier(.2,.72,.2,1) infinite; transform-origin: center; transform-box: fill-box; }
-    .meter { transform-origin: left center; animation: meter 4s cubic-bezier(.32,.72,0,1) infinite; }
-    @keyframes enter {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+    .phase { animation: phase 3.6s linear infinite; }
+    .scan { animation: scan 7.5s cubic-bezier(.32,.72,0,1) infinite; }
     @keyframes phase {
       to { transform: translateX(160px); }
     }
@@ -57,23 +41,9 @@
       50% { opacity: 1; }
       92%, 100% { transform: translateX(864px); opacity: 0; }
     }
-    @keyframes sample {
-      0%, 70%, 100% { opacity: .2; transform: scale(.75); }
-      15% { opacity: 1; transform: scale(1.45); }
-    }
-    @keyframes seam {
-      0%, 100% { opacity: .35; transform: scale(.85); }
-      48% { opacity: 1; transform: scale(1.18); }
-    }
-    @keyframes meter {
-      0%, 100% { transform: scaleX(.16); }
-      42% { transform: scaleX(.68); }
-      72% { transform: scaleX(.38); }
-    }
     @media (prefers-reduced-motion: reduce) {
-      .intro, .phase, .ghost-phase, .scan, .sample, .seam, .meter { animation: none; }
+      .phase, .scan { animation: none; }
       .scan { opacity: .65; transform: translateX(432px); }
-      .meter { transform: scaleX(.38); }
     }
   </style>
 
@@ -94,14 +64,14 @@
 
   <rect x="1" y="1" width="1198" height="518" rx="28" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>
 
-  <g class="intro">
+  <g>
     <text x="54" y="60" fill="var(--muted)" class="mono" font-size="13" letter-spacing="2.5">LIVE SIGNAL LAB · EXACT-CYCLE PCM</text>
-    <circle cx="950" cy="55" r="5" fill="var(--good)" class="sample"/>
+    <circle cx="950" cy="55" r="5" fill="var(--good)"/>
     <text x="966" y="60" fill="var(--good)" class="mono" font-size="12" font-weight="700">STREAMING</text>
     <text x="1146" y="60" text-anchor="end" fill="var(--muted)" class="mono" font-size="13">FIG. 01</text>
   </g>
 
-  <g class="intro i2">
+  <g>
     <rect x="52" y="94" width="942" height="340" rx="24" fill="var(--well-2)" stroke="var(--line)" stroke-width="2"/>
     <rect x="62" y="104" width="922" height="320" rx="20" fill="var(--well)" stroke="var(--line)"/>
     <rect x="76" y="118" width="894" height="292" rx="18" fill="url(#microGrid)"/>
@@ -110,7 +80,7 @@
   </g>
 
   <g clip-path="url(#scope)">
-    <g class="ghost-phase" opacity=".13" stroke="var(--muted)" stroke-width="2">
+    <g opacity=".1" stroke="var(--muted)" stroke-width="2">
       <path d="M-244 264C-224 198-184 198-164 264S-104 330-84 264S-24 198-4 264S56 330 76 264S136 198 156 264S216 330 236 264S296 198 316 264S376 330 396 264S456 198 476 264S536 330 556 264S616 198 636 264S696 330 716 264S776 198 796 264S856 330 876 264S936 198 956 264S1016 330 1036 264S1096 198 1116 264S1176 330 1196 264"/>
     </g>
     <g class="phase" stroke="url(#trace)" stroke-width="5" stroke-linecap="round">
@@ -123,18 +93,10 @@
       <circle cx="88" cy="264" r="6" fill="var(--well)" stroke="var(--accent)" stroke-width="3"/>
     </g>
 
-    <g fill="var(--accent)">
-      <circle class="sample s1" cx="156" cy="264" r="3"/>
-      <circle class="sample s2" cx="236" cy="264" r="3"/>
-      <circle class="sample s3" cx="316" cy="264" r="3"/>
-      <circle class="sample s4" cx="396" cy="264" r="3"/>
-      <circle class="sample s5" cx="476" cy="264" r="3"/>
-      <circle class="sample s6" cx="556" cy="264" r="3"/>
-    </g>
   </g>
 
-  <g class="intro i3">
-    <circle class="seam" cx="970" cy="264" r="11" fill="var(--well)" stroke="var(--accent)" stroke-width="2"/>
+  <g>
+    <circle cx="970" cy="264" r="11" fill="var(--well)" stroke="var(--accent)" stroke-width="2"/>
     <circle cx="970" cy="264" r="4" fill="var(--accent)"/>
     <rect x="786" y="376" width="166" height="28" rx="14" fill="var(--accent-soft)"/>
     <text x="869" y="395" text-anchor="middle" fill="var(--accent)" class="mono" font-size="10.5" font-weight="700">SEAMLESS LOOP</text>
@@ -149,14 +111,14 @@
     </g>
 
     <line x1="1052" y1="274" x2="1114" y2="274" stroke="var(--line)" stroke-width="8" stroke-linecap="round"/>
-    <line class="meter" x1="1052" y1="274" x2="1114" y2="274" stroke="var(--accent)" stroke-width="8" stroke-linecap="round"/>
+    <line x1="1052" y1="274" x2="1081" y2="274" stroke="var(--accent)" stroke-width="8" stroke-linecap="round"/>
     <text x="1083" y="304" text-anchor="middle" fill="var(--muted)" class="mono" font-size="10" letter-spacing="1.5">AMPLITUDE</text>
 
     <text x="1083" y="354" text-anchor="middle" fill="var(--ink)" class="mono" font-size="16" font-weight="700">4,800</text>
     <text x="1083" y="375" text-anchor="middle" fill="var(--muted)" class="mono" font-size="9.5" letter-spacing="1.2">SAMPLES</text>
   </g>
 
-  <g class="intro i3">
+  <g>
     <text x="56" y="476" fill="var(--muted)" class="mono" font-size="12" letter-spacing="1.8">48,000 SAMPLES / SECOND</text>
     <text x="405" y="476" fill="var(--muted)" class="mono" font-size="12" letter-spacing="1.8">16-BIT MONO PCM</text>
     <text x="700" y="476" fill="var(--muted)" class="mono" font-size="12" letter-spacing="1.8">0.1 SECOND BUFFER</text>

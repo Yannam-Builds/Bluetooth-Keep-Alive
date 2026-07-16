@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/hero.svg?v=20260716-2" width="100%" alt="Bluetooth Keep-Alive — native Windows tray utility">
+  <img src="./assets/hero-v3.svg" width="100%" alt="Bluetooth Keep-Alive — native Windows tray utility">
 </p>
 
 <p align="center">
@@ -19,7 +19,7 @@
 ## The signal that stays out of your way
 
 <p align="center">
-  <img src="./assets/sine-lab.svg?v=20260716-2" width="100%" alt="Animated sine-wave laboratory showing the Bluetooth keep-alive signal, sample playhead, selectable frequency, and seamless loop">
+  <img src="./assets/sine-lab-v3.svg" width="100%" alt="Animated sine-wave laboratory showing the Bluetooth keep-alive signal, sample playhead, selectable frequency, and seamless loop">
 </p>
 
 The stream is deliberately simple: one clean sine wave, a very low configurable amplitude, and an exact loop boundary. Choose 18–22 kHz and the app regenerates the buffer immediately—no audio files, codecs, or network activity involved.
@@ -76,7 +76,7 @@ Bluetooth Keep-Alive maintains a minimal audio stream on the output you choose. 
 ## How it works
 
 <p align="center">
-  <img src="./assets/signal-flow.svg?v=20260716-2" width="100%" alt="Animated signal flow from the sine-wave buffer through winmm to the Bluetooth output">
+  <img src="./assets/signal-flow-v3.svg" width="100%" alt="Animated signal flow from the sine-wave buffer through winmm to the Bluetooth output">
 </p>
 
 The app generates 0.1 seconds of 48 kHz, 16-bit mono PCM audio. At each selectable integer-kilohertz frequency, the 4,800-sample buffer contains a whole number of sine-wave cycles. The final sample therefore meets the first cleanly when `waveOut` loops the buffer.
@@ -126,5 +126,5 @@ The current stable build is [Bluetooth Keep-Alive 1.0](https://github.com/Yannam
 Released under the [MIT License](./LICENSE).
 
 <p align="center">
-  <img src="./assets/live-status.svg?v=20260716-2" width="100%" alt="Animated status footer: signal active, native Windows utility, zero dependencies and zero telemetry">
+  <img src="./assets/live-status-v3.svg" width="100%" alt="Animated status footer: signal active, native Windows utility, zero dependencies and zero telemetry">
 </p>

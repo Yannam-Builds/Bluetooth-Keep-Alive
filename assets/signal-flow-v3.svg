@@ -27,7 +27,7 @@
     .sans { font-family: Geist, "Avenir Next", "Segoe UI", system-ui, sans-serif; }
     .mono { font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace; }
     .flow { stroke-dasharray: 8 12; animation: flow 1.8s linear infinite; }
-    .pulse { animation: pulse 2.2s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+    .pulse-ring { animation: pulse-ring 2.8s cubic-bezier(.2,.72,.2,1) infinite; }
     .wave { stroke-dasharray: 5 8; animation: flow 1.5s linear infinite; }
     .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards; }
     .n1 { animation-delay: .12s; }
@@ -35,17 +35,17 @@
     .n3 { animation-delay: .48s; }
     .n4 { animation-delay: .7s; }
     @keyframes flow { to { stroke-dashoffset: -40; } }
-    @keyframes pulse {
-      0% { opacity: .75; transform: scale(.7); }
-      75%, 100% { opacity: 0; transform: scale(1.35); }
+    @keyframes pulse-ring {
+      0% { r: 8px; opacity: .65; stroke-width: 2px; }
+      72%, 100% { r: 18px; opacity: 0; stroke-width: 1px; }
     }
     @keyframes rise {
       from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
     @media (prefers-reduced-motion: reduce) {
-      .flow, .pulse, .wave, .rise { animation: none; }
-      .pulse { opacity: .2; }
+      .flow, .pulse-ring, .wave, .rise { animation: none; }
+      .pulse-ring { opacity: .2; r: 13px; }
     }
   </style>
 
@@ -89,10 +89,10 @@
     <text x="896" y="180" fill="var(--ink)" class="sans" font-size="24" font-weight="700">Bluetooth output</text>
     <text x="896" y="211" fill="var(--muted)" class="mono" font-size="13">selected device · awake</text>
     <circle cx="920" cy="256" r="8" fill="var(--good)"/>
-    <circle class="pulse" cx="920" cy="256" r="17" stroke="var(--good)" stroke-width="2"/>
+    <circle class="pulse-ring" cx="920" cy="256" r="8" stroke="var(--good)" stroke-width="2"/>
     <text x="943" y="261" fill="var(--good)" class="mono" font-size="13" font-weight="700">READY</text>
     <circle cx="1084" cy="256" r="30" fill="var(--accent-soft)"/>
-    <circle class="pulse" cx="1084" cy="256" r="26" stroke="var(--accent)" stroke-width="2"/>
+    <circle class="pulse-ring" cx="1084" cy="256" r="8" stroke="var(--accent)" stroke-width="2"/>
     <circle cx="1084" cy="256" r="9" fill="var(--accent)"/>
     <path d="M1079 256L1083 260L1091 250" stroke="var(--card)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
   </g>
