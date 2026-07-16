@@ -1,0 +1,110 @@
+<svg viewBox="0 0 1200 410" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Bluetooth Keep-Alive signal flow</title>
+  <desc id="desc">An animated diagram showing the exact-cycle audio buffer flowing through the Windows multimedia API to a Bluetooth output, with default-device fallback.</desc>
+  <style>
+    :root {
+      --panel: #f6f8fa;
+      --card: #ffffff;
+      --ink: #0d1117;
+      --muted: #57606a;
+      --line: #d0d7de;
+      --accent: #0969da;
+      --accent-soft: #ddf4ff;
+      --good: #1a7f37;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --panel: #0d1117;
+        --card: #161b22;
+        --ink: #f0f6fc;
+        --muted: #8b949e;
+        --line: #30363d;
+        --accent: #58a6ff;
+        --accent-soft: #0c2d4a;
+        --good: #3fb950;
+      }
+    }
+    .sans { font-family: Geist, "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+    .mono { font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace; }
+    .flow { stroke-dasharray: 8 12; animation: flow 1.8s linear infinite; }
+    .pulse { animation: pulse 2.2s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+    .wave { stroke-dasharray: 5 8; animation: flow 1.5s linear infinite; }
+    .rise { animation: rise .7s cubic-bezier(.2,.7,.2,1) backwards; }
+    .n1 { animation-delay: .12s; }
+    .n2 { animation-delay: .3s; }
+    .n3 { animation-delay: .48s; }
+    .n4 { animation-delay: .7s; }
+    @keyframes flow { to { stroke-dashoffset: -40; } }
+    @keyframes pulse {
+      0% { opacity: .75; transform: scale(.7); }
+      75%, 100% { opacity: 0; transform: scale(1.35); }
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .flow, .pulse, .wave, .rise { animation: none; }
+      .pulse { opacity: .2; }
+    }
+  </style>
+
+  <rect x="1" y="1" width="1198" height="408" rx="24" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>
+  <text x="54" y="54" fill="var(--muted)" class="mono" font-size="13" letter-spacing="2.4">SIGNAL PATH · CONTINUOUS, LOCAL, POP-FREE</text>
+  <text x="1146" y="54" text-anchor="end" fill="var(--muted)" class="mono" font-size="13">FIG. 01</text>
+
+  <path d="M328 194H468" stroke="var(--line)" stroke-width="3"/>
+  <path class="flow" d="M328 194H468" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M732 194H872" stroke="var(--line)" stroke-width="3"/>
+  <path class="flow" d="M732 194H872" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M449 181L468 194L449 207" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M853 181L872 194L853 207" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <g class="rise n1">
+    <rect x="52" y="92" width="276" height="204" rx="18" fill="var(--card)" stroke="var(--line)"/>
+    <rect x="76" y="116" width="82" height="28" rx="14" fill="var(--accent-soft)"/>
+    <text x="117" y="135" text-anchor="middle" fill="var(--accent)" class="mono" font-size="11" font-weight="700">GENERATE</text>
+    <text x="76" y="180" fill="var(--ink)" class="sans" font-size="24" font-weight="700">Exact-cycle buffer</text>
+    <text x="76" y="211" fill="var(--muted)" class="mono" font-size="13">4,800 samples · 0.1 s</text>
+    <text x="76" y="236" fill="var(--muted)" class="mono" font-size="13">18–22 kHz · selectable</text>
+    <path class="wave" d="M76 268C88 268 88 252 100 252C112 252 112 284 124 284C136 284 136 252 148 252C160 252 160 284 172 284C184 284 184 252 196 252C208 252 208 284 220 284C232 284 232 252 244 252C256 252 256 284 268 284C280 284 280 268 292 268" stroke="var(--accent)" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <g class="rise n2">
+    <rect x="468" y="92" width="264" height="204" rx="18" fill="var(--card)" stroke="var(--line)"/>
+    <rect x="492" y="116" width="76" height="28" rx="14" fill="var(--accent-soft)"/>
+    <text x="530" y="135" text-anchor="middle" fill="var(--accent)" class="mono" font-size="11" font-weight="700">STREAM</text>
+    <text x="492" y="180" fill="var(--ink)" class="sans" font-size="24" font-weight="700">Windows waveOut</text>
+    <text x="492" y="211" fill="var(--muted)" class="mono" font-size="13">48 kHz · 16-bit · mono</text>
+    <text x="492" y="236" fill="var(--muted)" class="mono" font-size="13">winmm.dll · native API</text>
+    <rect x="492" y="257" width="216" height="18" rx="9" fill="var(--line)"/>
+    <rect x="492" y="257" width="152" height="18" rx="9" fill="var(--accent)"/>
+    <circle cx="644" cy="266" r="7" fill="var(--card)"/>
+  </g>
+
+  <g class="rise n3">
+    <rect x="872" y="92" width="276" height="204" rx="18" fill="var(--card)" stroke="var(--line)"/>
+    <rect x="896" y="116" width="74" height="28" rx="14" fill="var(--accent-soft)"/>
+    <text x="933" y="135" text-anchor="middle" fill="var(--accent)" class="mono" font-size="11" font-weight="700">ROUTE</text>
+    <text x="896" y="180" fill="var(--ink)" class="sans" font-size="24" font-weight="700">Bluetooth output</text>
+    <text x="896" y="211" fill="var(--muted)" class="mono" font-size="13">selected device · awake</text>
+    <circle cx="920" cy="256" r="8" fill="var(--good)"/>
+    <circle class="pulse" cx="920" cy="256" r="17" stroke="var(--good)" stroke-width="2"/>
+    <text x="943" y="261" fill="var(--good)" class="mono" font-size="13" font-weight="700">READY</text>
+    <g stroke="var(--ink)" stroke-width="5" stroke-linecap="round">
+      <path d="M1080 231V278"/>
+      <path d="M1061 245V264"/>
+      <path d="M1099 245V264"/>
+      <path d="M1048 237C1035 247 1035 262 1048 272"/>
+      <path d="M1112 237C1125 247 1125 262 1112 272"/>
+    </g>
+  </g>
+
+  <g class="rise n4">
+    <path d="M600 296V344H1010" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 7"/>
+    <path d="M995 333L1010 344L995 355" stroke="var(--muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="52" y="326" width="514" height="44" rx="12" fill="var(--card)" stroke="var(--line)"/>
+    <text x="74" y="353" fill="var(--muted)" class="mono" font-size="12.5">DEVICE LOST?</text>
+    <text x="196" y="353" fill="var(--ink)" class="mono" font-size="12.5">retry through WAVE_MAPPER → default output</text>
+  </g>
+</svg>

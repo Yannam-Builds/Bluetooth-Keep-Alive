@@ -1,0 +1,117 @@
+<svg viewBox="0 0 1200 540" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Bluetooth Keep-Alive</title>
+  <desc id="desc">An animated product banner showing a wireless keep-alive signal and a native Windows audio utility.</desc>
+  <style>
+    :root {
+      --panel: #f6f8fa;
+      --panel-2: #ffffff;
+      --ink: #0d1117;
+      --muted: #57606a;
+      --line: #d0d7de;
+      --accent: #0969da;
+      --accent-soft: #ddf4ff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --panel: #0d1117;
+        --panel-2: #161b22;
+        --ink: #f0f6fc;
+        --muted: #8b949e;
+        --line: #30363d;
+        --accent: #58a6ff;
+        --accent-soft: #0c2d4a;
+      }
+    }
+    .sans { font-family: Geist, "Avenir Next", "Segoe UI", system-ui, sans-serif; }
+    .mono { font-family: "Cascadia Mono", "SFMono-Regular", Consolas, monospace; }
+    .reveal { animation: reveal .8s cubic-bezier(.2,.7,.2,1) backwards; }
+    .r1 { animation-delay: .12s; }
+    .r2 { animation-delay: .28s; }
+    .r3 { animation-delay: .44s; }
+    .r4 { animation-delay: .62s; }
+    .draw {
+      stroke-dasharray: 1;
+      animation: draw 1.15s cubic-bezier(.55,0,.2,1) backwards;
+    }
+    .d1 { animation-delay: .22s; }
+    .d2 { animation-delay: .4s; }
+    .d3 { animation-delay: .58s; }
+    .d4 { animation-delay: .76s; }
+    .wave { stroke-dasharray: 8 12; animation: wave 2.1s linear infinite; }
+    .halo { animation: halo 2.8s ease-out infinite; transform-origin: 930px 270px; }
+    .blink { animation: blink 2.4s ease-in-out infinite; }
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes draw {
+      from { stroke-dashoffset: 1; }
+      to { stroke-dashoffset: 0; }
+    }
+    @keyframes wave { to { stroke-dashoffset: -40; } }
+    @keyframes halo {
+      0% { opacity: .5; transform: scale(.82); }
+      72%, 100% { opacity: 0; transform: scale(1.25); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .35; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .draw, .wave, .halo, .blink { animation: none; }
+      .draw { stroke-dashoffset: 0; }
+      .halo { opacity: .15; }
+    }
+  </style>
+
+  <rect x="1" y="1" width="1198" height="538" rx="28" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>
+  <path d="M28 116H1172" stroke="var(--line)"/>
+  <path d="M28 458H1172" stroke="var(--line)"/>
+
+  <g class="reveal r1">
+    <circle cx="74" cy="64" r="5" fill="var(--accent)" class="blink"/>
+    <text x="92" y="70" fill="var(--muted)" class="mono" font-size="15" letter-spacing="2.6">AUDIO LINK ACTIVE</text>
+    <text x="790" y="70" fill="var(--muted)" class="mono" font-size="15" letter-spacing="2.2">NATIVE WINDOWS UTILITY</text>
+    <rect x="1054" y="42" width="90" height="42" rx="21" fill="var(--accent-soft)" stroke="var(--accent)"/>
+    <text x="1099" y="69" text-anchor="middle" fill="var(--accent)" class="mono" font-size="15" font-weight="700">v1.0</text>
+  </g>
+
+  <g class="reveal r2">
+    <text x="70" y="210" fill="var(--ink)" class="sans" font-size="70" font-weight="750" letter-spacing="-2.5">Bluetooth</text>
+    <text x="70" y="286" fill="var(--ink)" class="sans" font-size="70" font-weight="750" letter-spacing="-2.5">Keep-Alive</text>
+  </g>
+
+  <g class="reveal r3">
+    <text x="74" y="337" fill="var(--muted)" class="sans" font-size="24">Keep wireless audio awake with a signal you never notice.</text>
+  </g>
+
+  <g class="reveal r4">
+    <rect x="72" y="374" width="175" height="42" rx="21" fill="var(--panel-2)" stroke="var(--line)"/>
+    <text x="160" y="401" text-anchor="middle" fill="var(--ink)" class="mono" font-size="14">18–22 kHz</text>
+    <rect x="261" y="374" width="187" height="42" rx="21" fill="var(--panel-2)" stroke="var(--line)"/>
+    <text x="355" y="401" text-anchor="middle" fill="var(--ink)" class="mono" font-size="14">POP-FREE LOOP</text>
+    <rect x="462" y="374" width="202" height="42" rx="21" fill="var(--panel-2)" stroke="var(--line)"/>
+    <text x="563" y="401" text-anchor="middle" fill="var(--ink)" class="mono" font-size="14">ZERO TELEMETRY</text>
+  </g>
+
+  <g>
+    <circle class="halo" cx="930" cy="270" r="184" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="930" cy="270" r="164" fill="var(--panel-2)" stroke="var(--line)"/>
+    <circle cx="930" cy="270" r="128" fill="var(--accent-soft)" opacity=".45"/>
+
+    <g stroke="var(--ink)" stroke-width="27" stroke-linecap="round">
+      <path class="draw d1" pathLength="1" d="M930 187V353"/>
+      <path class="draw d2" pathLength="1" d="M858 231V309"/>
+      <path class="draw d2" pathLength="1" d="M1002 231V309"/>
+      <path class="draw d3" pathLength="1" d="M813 204C767 242 767 298 813 336"/>
+      <path class="draw d3" pathLength="1" d="M1047 204C1093 242 1093 298 1047 336"/>
+      <path class="draw d4" pathLength="1" d="M771 162C686 220 686 320 771 378"/>
+      <path class="draw d4" pathLength="1" d="M1089 162C1174 220 1174 320 1089 378"/>
+    </g>
+  </g>
+
+  <g>
+    <text x="72" y="500" fill="var(--muted)" class="mono" font-size="13" letter-spacing="2">48 kHz · 16-BIT MONO · 0.1 s BUFFER</text>
+    <path class="wave" d="M642 499C665 499 665 475 688 475C711 475 711 523 734 523C757 523 757 475 780 475C803 475 803 523 826 523C849 523 849 475 872 475C895 475 895 523 918 523C941 523 941 475 964 475C987 475 987 523 1010 523C1033 523 1033 499 1056 499H1138" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>

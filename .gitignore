@@ -4,10 +4,13 @@
 *.pdb
 
 # Generated build artifacts
-app.ico
 bin/
 obj/
 .vs/
+
+# Generated/intermediate assets
+/convert.py
+/*.png
 
 # Temporary logs
 *.log

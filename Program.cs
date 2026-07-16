@@ -5,6 +5,16 @@ using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using System.Collections.Generic;
 using System.Threading;
+using System.Reflection;
+
+[assembly: AssemblyTitle("Bluetooth Keep-Alive")]
+[assembly: AssemblyDescription("Keeps Bluetooth audio devices awake with a continuous high-frequency signal.")]
+[assembly: AssemblyCompany("Yannam Builds")]
+[assembly: AssemblyProduct("Bluetooth Keep-Alive")]
+[assembly: AssemblyCopyright("Copyright © 2026 Yannam Builds")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyInformationalVersion("1.0")]
 
 namespace BluetoothKeepAlive
 {

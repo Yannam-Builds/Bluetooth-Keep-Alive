@@ -9,7 +9,7 @@ namespace BluetoothKeepAlive.Tools
 {
     internal static class IconBuilder
     {
-        private static readonly int[] IconSizes = new int[] { 16, 20, 24, 32, 40, 48, 64, 128, 256 };
+        private static readonly int[] IconSizes = new int[] { 16, 20, 24, 32, 40, 48, 64, 96, 128, 256 };
 
         // Polygon silhouettes traced directly from the supplied 1024 x 1024 logo.
         private static readonly string[] PolygonData = new string[]
