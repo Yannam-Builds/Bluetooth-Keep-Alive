@@ -15,15 +15,7 @@
   <rect width="640" height="640" fill="url(#glow)"/>
   <rect x="34" y="34" width="1212" height="572" rx="26" stroke="#FFFFFF" stroke-opacity=".12" stroke-width="2"/>
 
-  <g transform="translate(290 320)" stroke="#FFFFFF" stroke-width="30" stroke-linecap="round">
-    <path d="M0-116V116"/>
-    <path d="M-83-50V50"/>
-    <path d="M83-50V50"/>
-    <path d="M-137-88C-184-42-184 42-137 88"/>
-    <path d="M137-88C184-42 184 42 137 88"/>
-    <path d="M-190-137C-273-61-273 61-190 137"/>
-    <path d="M190-137C273-61 273 61 190 137"/>
-  </g>
+  <image href="./logo.png" x="28" y="54" width="524" height="524" preserveAspectRatio="xMidYMid meet"/>
 
   <circle cx="635" cy="160" r="6" fill="#58A6FF"/>
   <text x="657" y="167" fill="#8B949E" font-family="Cascadia Mono, Consolas, monospace" font-size="18" letter-spacing="3">NATIVE WINDOWS AUDIO UTILITY</text>

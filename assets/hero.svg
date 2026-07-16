@@ -38,7 +38,8 @@
     .d3 { animation-delay: .58s; }
     .d4 { animation-delay: .76s; }
     .wave { stroke-dasharray: 8 12; animation: wave 2.1s linear infinite; }
-    .halo { animation: halo 2.8s ease-out infinite; transform-origin: 930px 270px; }
+    .halo { animation: halo 3.4s cubic-bezier(.2,.72,.2,1) infinite; transform-origin: 880px 270px; }
+    .brand { animation: brand 5.2s cubic-bezier(.32,.72,0,1) infinite; transform-origin: 880px 270px; }
     .blink { animation: blink 2.4s ease-in-out infinite; }
     @keyframes reveal {
       from { opacity: 0; transform: translateY(10px); }
@@ -50,15 +51,19 @@
     }
     @keyframes wave { to { stroke-dashoffset: -40; } }
     @keyframes halo {
-      0% { opacity: .5; transform: scale(.82); }
-      72%, 100% { opacity: 0; transform: scale(1.25); }
+      0% { opacity: .34; transform: scale(.88); }
+      72%, 100% { opacity: 0; transform: scale(1.18); }
+    }
+    @keyframes brand {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
     @keyframes blink {
       0%, 100% { opacity: 1; }
       50% { opacity: .35; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .reveal, .draw, .wave, .halo, .blink { animation: none; }
+      .reveal, .draw, .wave, .halo, .brand, .blink { animation: none; }
       .draw { stroke-dashoffset: 0; }
       .halo { opacity: .15; }
     }
@@ -95,18 +100,19 @@
   </g>
 
   <g>
-    <circle class="halo" cx="930" cy="270" r="184" stroke="var(--accent)" stroke-width="2"/>
-    <circle cx="930" cy="270" r="164" fill="var(--panel-2)" stroke="var(--line)"/>
-    <circle cx="930" cy="270" r="128" fill="var(--accent-soft)" opacity=".45"/>
+    <circle class="halo" cx="880" cy="270" r="176" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="880" cy="270" r="164" fill="var(--accent-soft)" opacity=".2"/>
 
-    <g stroke="var(--ink)" stroke-width="27" stroke-linecap="round">
-      <path class="draw d1" pathLength="1" d="M930 187V353"/>
-      <path class="draw d2" pathLength="1" d="M858 231V309"/>
-      <path class="draw d2" pathLength="1" d="M1002 231V309"/>
-      <path class="draw d3" pathLength="1" d="M813 204C767 242 767 298 813 336"/>
-      <path class="draw d3" pathLength="1" d="M1047 204C1093 242 1093 298 1047 336"/>
-      <path class="draw d4" pathLength="1" d="M771 162C686 220 686 320 771 378"/>
-      <path class="draw d4" pathLength="1" d="M1089 162C1174 220 1174 320 1089 378"/>
+    <g transform="translate(650 40) scale(.45)" fill="var(--ink)">
+      <g class="brand">
+      <path d="M 215 220 L 213 221 L 210 226 L 204 233 L 190 254 L 172 285 L 160 309 L 151 330 L 143 351 L 136 373 L 135 380 L 132 387 L 123 426 L 118 460 L 116 480 L 115 498 L 115 533 L 117 563 L 119 580 L 122 599 L 126 618 L 132 643 L 139 666 L 146 686 L 158 715 L 174 747 L 183 763 L 198 786 L 212 805 L 214 806 L 216 804 L 217 804 L 222 798 L 255 766 L 247 756 L 237 741 L 224 719 L 207 684 L 199 664 L 191 640 L 183 610 L 181 595 L 179 590 L 176 569 L 173 528 L 173 498 L 174 479 L 176 459 L 180 433 L 183 419 L 191 388 L 203 353 L 205 351 L 207 344 L 211 337 L 213 330 L 218 322 L 218 320 L 221 314 L 240 281 L 253 263 L 253 262 L 255 260 L 250 254 Z"/>
+      <path d="M 300 304 L 298 305 L 298 306 L 296 308 L 295 311 L 291 316 L 288 321 L 274 348 L 268 361 L 259 384 L 253 403 L 248 421 L 241 457 L 238 486 L 237 513 L 238 543 L 240 565 L 248 607 L 251 614 L 253 625 L 260 646 L 270 671 L 287 704 L 298 720 L 298 721 L 300 722 L 340 682 L 340 680 L 332 667 L 318 638 L 313 625 L 307 606 L 305 594 L 302 586 L 299 571 L 296 546 L 295 528 L 295 503 L 297 473 L 300 452 L 306 425 L 312 405 L 317 391 L 323 377 L 340 345 L 340 343 L 305 308 Z"/>
+      <path d="M 379 395 L 375 396 L 370 399 L 366 403 L 364 406 L 361 413 L 361 612 L 365 621 L 370 626 L 375 629 L 378 630 L 389 630 L 396 627 L 416 607 L 418 603 L 419 599 L 418 548 L 419 425 L 417 419 L 396 398 L 392 396 L 388 395 Z"/>
+      <path d="M 492 200 L 482 201 L 483 825 L 543 825 L 543 201 Z"/>
+      <path d="M 637 395 L 633 396 L 628 399 L 609 418 L 607 421 L 606 425 L 606 601 L 608 606 L 629 627 L 635 630 L 647 630 L 650 629 L 655 626 L 660 621 L 664 612 L 664 413 L 661 406 L 659 403 L 655 399 L 652 397 L 645 395 Z"/>
+      <path d="M 726 303 L 702 326 L 694 335 L 685 343 L 685 345 L 692 356 L 705 383 L 716 413 L 721 431 L 726 455 L 728 469 L 730 498 L 730 531 L 729 547 L 726 572 L 721 596 L 718 607 L 710 631 L 704 646 L 692 670 L 688 677 L 686 679 L 685 682 L 726 722 L 732 714 L 741 699 L 755 671 L 763 652 L 770 632 L 775 615 L 782 584 L 787 545 L 788 527 L 788 502 L 786 472 L 781 438 L 776 415 L 770 395 L 768 392 L 767 389 L 766 383 L 764 377 L 761 372 L 760 367 L 754 353 L 741 327 L 731 310 L 728 307 Z"/>
+        <path d="M 812 220 L 801 229 L 771 259 L 771 261 L 774 266 L 782 276 L 793 294 L 802 310 L 812 330 L 816 339 L 818 346 L 820 348 L 824 358 L 833 384 L 834 391 L 837 398 L 839 406 L 839 410 L 842 418 L 845 433 L 850 469 L 852 498 L 852 531 L 851 549 L 847 584 L 842 611 L 833 644 L 822 675 L 818 682 L 816 689 L 804 714 L 787 743 L 781 752 L 771 765 L 771 767 L 793 788 L 803 799 L 813 805 L 833 777 L 851 747 L 865 719 L 874 698 L 881 680 L 884 671 L 886 662 L 888 659 L 897 626 L 904 591 L 909 545 L 910 508 L 909 485 L 906 453 L 901 421 L 896 398 L 891 379 L 878 339 L 864 306 L 852 282 L 835 253 Z"/>
+      </g>
     </g>
   </g>
 
