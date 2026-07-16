@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="390" viewBox="0 0 1200 390" role="img" aria-labelledby="title desc">
   <title id="title">Bluetooth Keep-Alive system map</title>
-  <desc id="desc">Signal flow from the keep-alive engine through Windows audio to a Bluetooth device, using the official PNG logo.</desc>
+  <desc id="desc">Signal flow from the keep-alive engine through Windows audio to a Bluetooth device, using the final supplied logo.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#11161d"/>
-      <stop offset="1" stop-color="#090c10"/>
+      <stop offset="1" stop-color="#080b10"/>
     </linearGradient>
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".045"/>
@@ -13,38 +13,45 @@
       <path d="M0 0L10 5L0 10Z" fill="#8b949e"/>
     </marker>
   </defs>
+
   <rect width="1200" height="390" fill="url(#bg)"/>
   <rect width="1200" height="390" fill="url(#grid)"/>
   <rect x="36" y="36" width="1128" height="318" rx="24" fill="#0d1117" fill-opacity=".94" stroke="#30363d" stroke-width="2"/>
-  <image href="logo.png" xlink:href="logo.png" x="57" y="45" width="66" height="66" preserveAspectRatio="xMidYMid meet"/>
-  <text x="132" y="80" fill="#f0f6fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="720">SYSTEM MAP</text>
-  <text x="132" y="108" fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17">A native signal path that prevents Bluetooth standby without a foreground window.</text>
+
+  <image href="logo.png?rev=20260716-final" xlink:href="logo.png?rev=20260716-final" x="58" y="48" width="64" height="64" preserveAspectRatio="xMidYMid meet"/>
+  <text x="136" y="80" fill="#f0f6fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" font-weight="720">SYSTEM MAP</text>
+  <text x="136" y="108" fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17">A tiny native path that prevents Bluetooth standby without opening a foreground window.</text>
+
   <g font-family="Inter,Segoe UI,Arial,sans-serif">
-    <g transform="translate(72 156)">
-      <rect width="248" height="136" rx="16" fill="#0b0f14" stroke="#30363d" stroke-width="2"/>
-      <text x="124" y="37" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="650">KEEP-ALIVE ENGINE</text>
-      <text x="124" y="77" text-anchor="middle" fill="#8b949e" font-size="15">18–22 kHz sine generator</text>
-      <text x="124" y="104" text-anchor="middle" fill="#8b949e" font-size="15">cycle-safe PCM buffer</text>
+    <g transform="translate(72 158)">
+      <rect width="250" height="134" rx="18" fill="#0a0e13" stroke="#30363d" stroke-width="2"/>
+      <text x="125" y="38" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="680">KEEP-ALIVE ENGINE</text>
+      <text x="125" y="78" text-anchor="middle" fill="#8b949e" font-size="15">18–22 kHz sine generator</text>
+      <text x="125" y="105" text-anchor="middle" fill="#8b949e" font-size="15">cycle-safe PCM buffer</text>
     </g>
-    <g transform="translate(476 156)">
-      <rect width="248" height="136" rx="16" fill="#0b0f14" stroke="#30363d" stroke-width="2"/>
-      <text x="124" y="37" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="650">WINDOWS AUDIO</text>
-      <text x="124" y="77" text-anchor="middle" fill="#8b949e" font-size="15">winmm.dll output stream</text>
-      <text x="124" y="104" text-anchor="middle" fill="#8b949e" font-size="15">default or selected device</text>
+
+    <g transform="translate(475 158)">
+      <rect width="250" height="134" rx="18" fill="#0a0e13" stroke="#30363d" stroke-width="2"/>
+      <text x="125" y="38" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="680">WINDOWS AUDIO</text>
+      <text x="125" y="78" text-anchor="middle" fill="#8b949e" font-size="15">winmm.dll output stream</text>
+      <text x="125" y="105" text-anchor="middle" fill="#8b949e" font-size="15">default or selected device</text>
     </g>
-    <g transform="translate(880 156)">
-      <rect width="248" height="136" rx="16" fill="#0b0f14" stroke="#30363d" stroke-width="2"/>
-      <text x="124" y="37" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="650">BLUETOOTH DEVICE</text>
-      <text x="124" y="77" text-anchor="middle" fill="#8b949e" font-size="15">audio path remains awake</text>
-      <text x="124" y="104" text-anchor="middle" fill="#8b949e" font-size="15">media starts immediately</text>
-      <image href="logo.png" xlink:href="logo.png" x="91" y="90" width="66" height="66" preserveAspectRatio="xMidYMid meet"/>
+
+    <g transform="translate(878 158)">
+      <rect width="250" height="134" rx="18" fill="#0a0e13" stroke="#30363d" stroke-width="2"/>
+      <image href="logo.png?rev=20260716-final" xlink:href="logo.png?rev=20260716-final" x="24" y="29" width="76" height="76" preserveAspectRatio="xMidYMid meet"/>
+      <text x="165" y="45" text-anchor="middle" fill="#f0f6fc" font-size="18" font-weight="680">BLUETOOTH DEVICE</text>
+      <text x="165" y="78" text-anchor="middle" fill="#8b949e" font-size="15">audio path stays awake</text>
+      <text x="165" y="105" text-anchor="middle" fill="#8b949e" font-size="15">media starts immediately</text>
     </g>
   </g>
-  <path d="M338 224H458" stroke="#8b949e" stroke-width="3" marker-end="url(#arrow)"/>
-  <path d="M742 224H862" stroke="#8b949e" stroke-width="3" marker-end="url(#arrow)"/>
-  <g fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="500" text-anchor="middle">
-    <text x="398" y="205">PCM</text>
-    <text x="802" y="205">OUTPUT</text>
+
+  <path d="M340 225H455" stroke="#8b949e" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M743 225H858" stroke="#8b949e" stroke-width="3" marker-end="url(#arrow)"/>
+  <g fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="12" font-weight="600" text-anchor="middle">
+    <text x="397" y="207">PCM</text>
+    <text x="800" y="207">OUTPUT</text>
   </g>
+
   <text x="600" y="330" text-anchor="middle" fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14">Pauses on lock or suspend · resumes automatically · no loop-seam clicks</text>
 </svg>

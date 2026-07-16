@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
   <title id="title">Bluetooth Keep-Alive</title>
-  <desc id="desc">Elegant repository header using the official Bluetooth Keep-Alive PNG logo.</desc>
+  <desc id="desc">Elegant dark repository header using the final supplied Bluetooth Keep-Alive logo.</desc>
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#11161d"/>
-      <stop offset="1" stop-color="#090c10"/>
+      <stop offset="1" stop-color="#080b10"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(206 210) rotate(90) scale(160)">
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(218 210) rotate(90) scale(168)">
       <stop stop-color="#58a6ff" stop-opacity=".18"/>
       <stop offset="1" stop-color="#0d1117" stop-opacity="0"/>
     </radialGradient>
@@ -14,20 +14,24 @@
       <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity=".045"/>
     </pattern>
   </defs>
+
   <rect width="1200" height="420" fill="url(#bg)"/>
   <rect width="1200" height="420" fill="url(#grid)"/>
   <rect x="36" y="36" width="1128" height="348" rx="26" fill="#0d1117" fill-opacity=".94" stroke="#30363d" stroke-width="2"/>
-  <circle cx="206" cy="210" r="160" fill="url(#glow)"/>
-  <rect x="76" y="76" width="260" height="268" rx="24" fill="#0b0f14" stroke="#30363d" stroke-width="2"/>
-  <image href="logo.png" xlink:href="logo.png" x="102" y="106" width="208" height="208" preserveAspectRatio="xMidYMid meet"/>
-  <text x="390" y="106" fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="500" letter-spacing="2.8">NATIVE WINDOWS TRAY UTILITY</text>
-  <text x="388" y="188" fill="#f0f6fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-1.4">Bluetooth Keep-Alive</text>
-  <text x="390" y="238" fill="#c9d1d9" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="23">Keeps Bluetooth audio awake with a silent high-frequency stream.</text>
-  <path d="M390 270H1092" stroke="#30363d" stroke-width="2"/>
-  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="500" text-anchor="middle">
-    <g transform="translate(390 295)"><rect width="138" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="69" y="24" fill="#c9d1d9">C# / WINFORMS</text></g>
-    <g transform="translate(550 295)"><rect width="108" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="54" y="24" fill="#c9d1d9">18–22 KHZ</text></g>
-    <g transform="translate(680 295)"><rect width="138" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="69" y="24" fill="#c9d1d9">SYSTEM TRAY</text></g>
-    <g transform="translate(840 295)"><rect width="122" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="61" y="24" fill="#c9d1d9">MIT LICENSE</text></g>
+  <circle cx="218" cy="210" r="168" fill="url(#glow)"/>
+
+  <rect x="72" y="70" width="292" height="280" rx="24" fill="#090d12" stroke="#30363d" stroke-width="2"/>
+  <image href="logo.png?rev=20260716-final" xlink:href="logo.png?rev=20260716-final" x="90" y="88" width="256" height="244" preserveAspectRatio="xMidYMid meet"/>
+
+  <text x="412" y="112" fill="#8b949e" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="3">NATIVE WINDOWS TRAY UTILITY</text>
+  <text x="410" y="192" fill="#f0f6fc" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="58" font-weight="720" letter-spacing="-1.4">Bluetooth Keep-Alive</text>
+  <text x="412" y="242" fill="#c9d1d9" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="23">Silent signal. Awake device. Instant audio.</text>
+  <path d="M412 272H1094" stroke="#30363d" stroke-width="2"/>
+
+  <g font-family="Inter,Segoe UI,Arial,sans-serif" font-size="14" font-weight="600" text-anchor="middle">
+    <g transform="translate(412 298)"><rect width="138" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="69" y="24" fill="#c9d1d9">C# / WINFORMS</text></g>
+    <g transform="translate(570 298)"><rect width="112" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="56" y="24" fill="#c9d1d9">18–22 KHZ</text></g>
+    <g transform="translate(702 298)"><rect width="138" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="69" y="24" fill="#c9d1d9">SYSTEM TRAY</text></g>
+    <g transform="translate(860 298)"><rect width="122" height="38" rx="10" fill="#161b22" stroke="#30363d"/><text x="61" y="24" fill="#c9d1d9">MIT LICENSE</text></g>
   </g>
 </svg>

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/header.svg" alt="Bluetooth Keep-Alive — native Windows tray utility" width="100%">
+<img src="assets/header.svg?rev=20260716-final" alt="Bluetooth Keep-Alive — native Windows tray utility" width="100%">
 
 <br>
 
@@ -32,7 +32,7 @@ Bluetooth headphones, speakers, and soundbars often enter standby during short s
 | **Branding** | The supplied transparent logo is used across the README, header, system map, tray icon, and executable. |
 
 <p align="center">
-  <img src="assets/system-map.svg" alt="Bluetooth Keep-Alive system map" width="100%">
+  <img src="assets/system-map.svg?rev=20260716-final" alt="Bluetooth Keep-Alive system map" width="100%">
 </p>
 
 ## 03 · Features
@@ -82,7 +82,7 @@ The logo is not redrawn in the repository artwork. `assets/logo.png` is referenc
 
 <div align="center">
 
-<img src="assets/logo.png" alt="Bluetooth Keep-Alive official logo" width="128">
+<img src="assets/logo.png?rev=20260716-final" alt="Bluetooth Keep-Alive official logo" width="128">
 
 <br>
 
