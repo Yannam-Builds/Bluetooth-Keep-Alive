@@ -100,10 +100,10 @@
   </g>
 
   <g>
-    <circle class="halo" cx="880" cy="270" r="176" stroke="var(--accent)" stroke-width="2"/>
-    <circle cx="880" cy="270" r="164" fill="var(--accent-soft)" opacity=".2"/>
+    <circle class="halo" cx="880" cy="270" r="132" stroke="var(--accent)" stroke-width="2"/>
+    <circle cx="880" cy="270" r="123" fill="var(--accent-soft)" opacity=".2"/>
 
-    <g transform="translate(650 40) scale(.45)" fill="var(--ink)">
+    <g transform="translate(707 97) scale(.3375)" fill="var(--ink)">
       <g class="brand">
       <path d="M 215 220 L 213 221 L 210 226 L 204 233 L 190 254 L 172 285 L 160 309 L 151 330 L 143 351 L 136 373 L 135 380 L 132 387 L 123 426 L 118 460 L 116 480 L 115 498 L 115 533 L 117 563 L 119 580 L 122 599 L 126 618 L 132 643 L 139 666 L 146 686 L 158 715 L 174 747 L 183 763 L 198 786 L 212 805 L 214 806 L 216 804 L 217 804 L 222 798 L 255 766 L 247 756 L 237 741 L 224 719 L 207 684 L 199 664 L 191 640 L 183 610 L 181 595 L 179 590 L 176 569 L 173 528 L 173 498 L 174 479 L 176 459 L 180 433 L 183 419 L 191 388 L 203 353 L 205 351 L 207 344 L 211 337 L 213 330 L 218 322 L 218 320 L 221 314 L 240 281 L 253 263 L 253 262 L 255 260 L 250 254 Z"/>
       <path d="M 300 304 L 298 305 L 298 306 L 296 308 L 295 311 L 291 316 L 288 321 L 274 348 L 268 361 L 259 384 L 253 403 L 248 421 L 241 457 L 238 486 L 237 513 L 238 543 L 240 565 L 248 607 L 251 614 L 253 625 L 260 646 L 270 671 L 287 704 L 298 720 L 298 721 L 300 722 L 340 682 L 340 680 L 332 667 L 318 638 L 313 625 L 307 606 L 305 594 L 302 586 L 299 571 L 296 546 L 295 528 L 295 503 L 297 473 L 300 452 L 306 425 L 312 405 L 317 391 L 323 377 L 340 345 L 340 343 L 305 308 Z"/>
@@ -118,6 +118,6 @@
 
   <g>
     <text x="72" y="500" fill="var(--muted)" class="mono" font-size="13" letter-spacing="2">48 kHz · 16-BIT MONO · 0.1 s BUFFER</text>
-    <path class="wave" d="M642 499C665 499 665 475 688 475C711 475 711 523 734 523C757 523 757 475 780 475C803 475 803 523 826 523C849 523 849 475 872 475C895 475 895 523 918 523C941 523 941 475 964 475C987 475 987 523 1010 523C1033 523 1033 499 1056 499H1138" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+    <path class="wave" transform="translate(222.5 124.75) scale(.75)" d="M642 499C665 499 665 475 688 475C711 475 711 523 734 523C757 523 757 475 780 475C803 475 803 523 826 523C849 523 849 475 872 475C895 475 895 523 918 523C941 523 941 475 964 475C987 475 987 523 1010 523C1033 523 1033 499 1056 499H1138" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
   </g>
 </svg>
