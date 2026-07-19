@@ -99,7 +99,7 @@
     <text x="563" y="401" text-anchor="middle" fill="var(--ink)" class="mono" font-size="14">ZERO TELEMETRY</text>
   </g>
 
-  <g>
+  <g transform="translate(40 0)">
     <circle class="halo" cx="880" cy="270" r="132" stroke="var(--accent)" stroke-width="2"/>
     <circle cx="880" cy="270" r="123" fill="var(--accent-soft)" opacity=".2"/>
 
