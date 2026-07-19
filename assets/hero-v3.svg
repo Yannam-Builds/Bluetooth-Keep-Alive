@@ -118,6 +118,6 @@
 
   <g>
     <text x="72" y="500" fill="var(--muted)" class="mono" font-size="13" letter-spacing="2">48 kHz · 16-BIT MONO · 0.1 s BUFFER</text>
-    <path class="wave" transform="translate(222.5 124.75) scale(.75)" d="M642 499C665 499 665 475 688 475C711 475 711 523 734 523C757 523 757 475 780 475C803 475 803 523 826 523C849 523 849 475 872 475C895 475 895 523 918 523C941 523 941 475 964 475C987 475 987 523 1010 523C1033 523 1033 499 1056 499H1138" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+    <path class="wave" d="M642 499C665 499 665 475 688 475C711 475 711 523 734 523C757 523 757 475 780 475C803 475 803 523 826 523C849 523 849 475 872 475C895 475 895 523 918 523C941 523 941 475 964 475C987 475 987 523 1010 523C1033 523 1033 499 1056 499H1138" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
   </g>
 </svg>
