@@ -71,10 +71,10 @@ namespace BluetoothKeepAlive
         private bool isMuted = false;
         private bool isSystemSuspendedOrLocked = false;
 
-        private IntPtr activeHIcon = IntPtr.Zero;
         private IntPtr mutedHIcon = IntPtr.Zero;
         private Icon activeIcon;
         private Icon mutedIcon;
+        private bool isExiting = false;
 
         public AppContext()
         {
@@ -123,26 +123,29 @@ namespace BluetoothKeepAlive
             }
             catch
             {
-                activeIcon = SystemIcons.Application;
+                activeIcon = (Icon)SystemIcons.Application.Clone();
             }
 
             try
             {
-                Bitmap bmpMuted = activeIcon.ToBitmap();
-                using (Graphics g = Graphics.FromImage(bmpMuted))
+                using (Bitmap bmpMuted = activeIcon.ToBitmap())
                 {
-                    g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                    using (Pen redPen = new Pen(Color.FromArgb(255, 50, 50), Math.Max(2.0f, bmpMuted.Width / 8.0f)))
+                    using (Graphics g = Graphics.FromImage(bmpMuted))
                     {
-                        g.DrawLine(redPen, 0, 0, bmpMuted.Width, bmpMuted.Height);
+                        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                        using (Pen redPen = new Pen(Color.FromArgb(255, 50, 50), Math.Max(2.0f, bmpMuted.Width / 8.0f)))
+                        {
+                            g.DrawLine(redPen, 0, 0, bmpMuted.Width, bmpMuted.Height);
+                        }
                     }
+
+                    mutedHIcon = bmpMuted.GetHicon();
+                    mutedIcon = Icon.FromHandle(mutedHIcon);
                 }
-                mutedHIcon = bmpMuted.GetHicon();
-                mutedIcon = Icon.FromHandle(mutedHIcon);
             }
             catch
             {
-                mutedIcon = activeIcon;
+                mutedIcon = (Icon)activeIcon.Clone();
             }
         }
 
@@ -490,35 +493,73 @@ namespace BluetoothKeepAlive
 
         private void ExitApp()
         {
-            player.Stop();
+            if (isExiting)
+            {
+                return;
+            }
+
+            isExiting = true;
+            CleanupResources();
+            ExitThread();
+        }
+
+        private void CleanupResources()
+        {
+            if (player != null)
+            {
+                player.Stop();
+            }
 
             // Unsubscribe from system events
             SystemEvents.SessionSwitch -= OnSessionSwitch;
             SystemEvents.PowerModeChanged -= OnPowerModeChanged;
 
-            // Release GDI Icon Handles
-            if (activeIcon != null) activeIcon.Dispose();
-            if (activeHIcon != IntPtr.Zero) DestroyIcon(activeHIcon);
-            if (mutedIcon != null) mutedIcon.Dispose();
-            if (mutedHIcon != IntPtr.Zero) DestroyIcon(mutedHIcon);
+            // NotifyIcon reads its Icon handle while changing visibility, so remove
+            // it from the tray before releasing any managed or native icon handles.
+            if (notifyIcon != null)
+            {
+                notifyIcon.Visible = false;
+                notifyIcon.Dispose();
+                notifyIcon = null;
+            }
 
-            notifyIcon.Visible = false;
-            notifyIcon.Dispose();
+            if (contextMenu != null)
+            {
+                contextMenu.Dispose();
+                contextMenu = null;
+            }
 
             if (messageWindow != null)
             {
                 messageWindow.Close();
                 messageWindow.Dispose();
+                messageWindow = null;
             }
 
-            Application.Exit();
+            // Icon.FromHandle does not own the HICON returned by GetHicon.
+            if (mutedIcon != null)
+            {
+                mutedIcon.Dispose();
+                mutedIcon = null;
+            }
+            if (mutedHIcon != IntPtr.Zero)
+            {
+                DestroyIcon(mutedHIcon);
+                mutedHIcon = IntPtr.Zero;
+            }
+            if (activeIcon != null)
+            {
+                activeIcon.Dispose();
+                activeIcon = null;
+            }
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (disposing && !isExiting)
             {
-                ExitApp();
+                isExiting = true;
+                CleanupResources();
             }
             base.Dispose(disposing);
         }
